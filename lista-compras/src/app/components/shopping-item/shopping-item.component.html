@@ -1,0 +1,22 @@
+<div class="shopping-item" [class.purchased]="item.purchased">
+  <div *ngIf="!isEditing">
+    <input
+      type="checkbox"
+      [checked]="item.purchased"
+      (change)="togglePurchased()"
+    />
+    <span>{{ item.name }}</span>
+    <button (click)="toggleEdit()">Editar</button>
+    <button class="delete-button" (click)="onDelete()">🗑️</button>
+  </div>
+
+  <div *ngIf="isEditing">
+    <input
+      type="text"
+      [(ngModel)]="editedName"
+      (keyup.enter)="saveEdit()"
+    />
+    <button (click)="saveEdit()">Salvar</button>
+    <button (click)="cancelEdit()">Cancelar</button>
+  </div>
+</div>

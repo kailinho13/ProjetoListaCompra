@@ -1,0 +1,34 @@
+<div class="shopping-list">
+  <h2>Lista de Compras</h2>
+  <div class="add-item">
+    <input
+      type="text"
+      [(ngModel)]="newItemName"
+      placeholder="Adicionar novo item"
+      (keyup.enter)="addItem()"
+    />
+    <button (click)="addItem()">Adicionar</button>
+  </div>
+
+  <div class="items-section">
+    <h3>Não Comprados</h3>
+    <div class="items">
+      <app-shopping-item
+        *ngFor="let item of notPurchasedItems"
+        [item]="item"
+        (deleteItem)="removeItem($event)"
+      ></app-shopping-item>
+    </div>
+  </div>
+
+  <div class="items-section">
+    <h3>Comprados</h3>
+    <div class="items">
+      <app-shopping-item
+        *ngFor="let item of purchasedItems"
+        [item]="item"
+        (deleteItem)="removeItem($event)"
+      ></app-shopping-item>
+    </div>
+  </div>
+</div>
